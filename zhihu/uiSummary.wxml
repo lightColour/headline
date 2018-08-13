@@ -1,0 +1,13 @@
+<view class="summary">
+    <view bind:tap="handleTap" class="excerpt" wx:if="{{!expanded}}">
+        <slot name="excerptBefore"></slot>
+        <rich-text class="excerptContent" nodes="{{excerpt}}"></rich-text>
+        <slot name="button" wx:if="{{canExpand}}"></slot>
+        <OffscreenMeasure bind:measure="handleExcerptMeasure">
+            <rich-text nodes="{{excerpt}}"></rich-text>
+        </OffscreenMeasure>
+    </view>
+    <view class="detail" wx:else>
+        <ztext-auto html="{{detail}}"></ztext-auto>
+    </view>
+</view>

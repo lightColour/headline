@@ -1,0 +1,42 @@
+<view class="page" wx:if="{{answer}}">
+    <view bind:tap="handleRedirectBack" class="title" data-id="{{answer.question.id}}">
+    {{answer.question.title}}
+  </view>
+    <view bind:tap="handleRedirectBack" class="checkAllAnswerBanner" data-id="{{answer.question.id}}" wx:if="{{showTitleOnNavigationBar}}">
+        <view>查看全部 {{formatNumber(answerCount)}} 个回答</view>
+        <image class="checkAllAnswerBanner-arrow" src="/assets/arrowRight.d5833c.svg"></image>
+    </view>
+    <view class="main">
+        <view class="byline">
+            <image class="byline-avatar" src="{{img.imgUrl( answer.author.avatar_url,{size:'l'} )}}"></image>
+            <view class="byline-content">
+                <view class="byline-name">{{answer.author.name}}</view>
+                <view class="byline-bio" wx:if="{{answer.author.headline}}">{{answer.author.headline}}</view>
+            </view>
+        </view>
+        <view class="content">
+            <ui-video bind:expand="handleVideoLoadMore" videoId="{{videoId}}" wx:if="{{shouldShowVideoOnly&&videoId}}"></ui-video>
+            <ztext-auto class="richtext" html="{{answer.content}}" wx:if="{{!shouldShowVideoOnly}}"></ztext-auto>
+            <view class="content-meta" wx:if="{{!shouldShowVideoOnly}}">
+                <view>
+                    <text wx:if="{{answer.updated_time!==answer.created_time}}">
+            编辑于 {{formatDateRelative(answer.updated_time*1000)}}
+          </text>
+                    <text wx:else>
+            发布于 {{formatDateRelative(answer.created_time*1000)}}
+          </text>
+                    <text>{{answer.reshipment_settings==='disallowed'?'禁止转载':'著作权归作者所有'}}</text>
+                </view>
+            </view>
+            <SafeAreaInset></SafeAreaInset>
+        </view>
+    </view>
+    <AbstractComment bindopenCommentPanel="openCommentPanel" commentCount="{{answer.comment_count}}" entryId="{{entryId}}" entryType="answer" wx:if="{{answer}}"></AbstractComment>
+    <HotRecommand end="{{!hasNext}}" loading="{{loading}}" recommands="{{recommands}}"></HotRecommand>
+    <ToolBar bindopenCommentPanel="openCommentPanel" commentCount="{{answer.comment_count}}" entryId="{{entryId}}" isToolBarShown="{{isToolBarShown}}" type="answer" voteupCount="{{answer.voteup_count}}" voting="{{answer.relationship.voting}}" wx:if="{{answer}}"></ToolBar>
+    <CommentPanel bindcloseCommentPanel="closeCommentPanel" entryId="{{entryId}}" entryType="answer" wx:if="{{showCommentPanel}}"></CommentPanel>
+    <OpenInApp url="answer/{{entryId}}"></OpenInApp>
+</view>
+<wxs module="formatDateRelative" src="../assets/formatDateRelative.861987.wxs" />
+<wxs module="img" src="../assets/img.065e87.wxs" />
+<wxs module="formatNumber" src="../assets/formatNumber.dcfc79.wxs" />

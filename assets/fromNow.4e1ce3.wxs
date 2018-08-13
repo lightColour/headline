@@ -1,0 +1,56 @@
+var fromNow = (function(past, now, maxUnit) {
+    past = getDate(past);
+    now = now ? getDate(now) : getDate();
+    var delta = (now - past) / 1000;
+    if (delta < 0) {
+        delta = -delta;
+        if (delta < 60) {
+            return (Math.ceil(delta) + ' 秒后')
+        };
+        delta = parseInt(delta / 60, 10);
+        if (delta < 60) {
+            return (delta + ' 分钟后')
+        };
+        delta = parseInt(delta / 60, 10);
+        if (delta < 24 || maxUnit === 'hour') {
+            return (delta + ' 小时后')
+        };
+        var nowDate = getDate(now);
+        var pastDate = getDate(past);
+        delta = parseInt((pastDate - nowDate) / 86400000, 10);
+        return (delta + ' 天后')
+    } else if (delta < 60) {
+        return ('刚刚')
+    };
+    delta = parseInt(delta / 60, 10);
+    if (delta < 60) {
+        return (delta + ' 分钟前')
+    };
+    delta = parseInt(delta / 60, 10);
+    if (delta < 24) {
+        return (delta + ' 小时前')
+    };
+    var yearGap = now.getFullYear() - past.getFullYear();
+    var monthGap = now.getMonth() - past.getMonth();
+    var dayGap = now.getDate() - past.getDate();
+    var daysInCurrentMonth = (function(date) {
+        return (getDate(date.getFullYear(), date.getMonth() + 1, 0).getDate())
+    });
+    if (yearGap === 0 && monthGap === 0) {
+        return (dayGap + ' 天前')
+    };
+    if ((yearGap === 0 && monthGap === 1) || (yearGap === 1 && monthGap === -11)) {
+        if (dayGap < 0) {
+            return (daysInCurrentMonth(past) + dayGap + ' 天前')
+        };
+        return ('1 月前')
+    };
+    if (yearGap < 2) {
+        if (yearGap === 1 && monthGap >= 0) {
+            return ('1 年前')
+        };
+        return (yearGap * 12 + monthGap) + ' 月前'
+    };
+    return (yearGap + ' 年前')
+});
+module.exports = fromNow;

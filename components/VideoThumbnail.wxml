@@ -1,0 +1,6 @@
+<view class="video">
+    <ui-video lensId="{{videoId}}" poster="{{video.cover_info.thumbnail}}" useFullscreenVideo="{{true}}" wx:if="{{video}}"></ui-video>
+</view>
+<view bindtap="handleLoadMoreTap" class="loadMore">
+  点击查看全文
+</view>

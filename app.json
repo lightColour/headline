@@ -1,0 +1,19 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/search/index",
+        "pages/error/index",
+        "zhihu/answer",
+        "zhihu/question",
+        "zhihu/article"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "知乎",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#fafafa",
+        "onReachBottomDistance": 222
+    },
+    "debug": true
+}

@@ -1,0 +1,3 @@
+<button appParameter="{{parameter}}" binderror="launchAppError" bindtap="handleTap" class="root" openType="launchApp" wx:if="{{shown}}">
+  打开 App
+</button>

@@ -1,0 +1,8 @@
+<view class="root" wx:if="{{errorType}}">
+    <image class="img {{errorType}}" src="/assets/unauthorized.fdd35d.svg" wx:if="{{errorType==='unauthorized'}}"></image>
+    <image class="img {{errorType}}" src="/assets/notFound.d8af9e.svg" wx:if="{{errorType==='notFound'}}"></image>
+    <view class="notice">{{error.notice}}</view>
+    <navigator class="backToHome" openType="reLaunch" url="/pages/index/index">
+    返回首页
+  </navigator>
+</view>

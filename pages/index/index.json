@@ -1,0 +1,10 @@
+{
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "TabNav": "/components/TabNav",
+        "TopToast": "/components/TopToast",
+        "Subscription": "/pages/index/uiSubscription",
+        "HotItem": "/pages/index/uiHotItem",
+        "RecommendItem": "/pages/index/uiRecommendItem"
+    }
+}

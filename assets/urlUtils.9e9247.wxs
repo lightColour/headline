@@ -1,0 +1,4 @@
+function encode(para) {
+    return (encodeURIComponent(para))
+};
+module.exports.encode = encode;

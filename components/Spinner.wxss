@@ -1,0 +1,15 @@
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.Spinner {
+    width: 15px;
+    height: 15px;
+    animation: rotate 1s steps(12) infinite;
+}

@@ -1,0 +1,3 @@
+<view class="{{'TopToast '+(status?'fx-'+status:'')}}" style="top: {{offset}};" wx:if="{{mount}}">
+  {{text}}
+</view>

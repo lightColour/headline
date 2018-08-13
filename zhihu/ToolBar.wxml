@@ -1,0 +1,55 @@
+<view class="toolBar-holder"></view>
+<view class="{{isToolBarShown?'toolBar':'toolBar ToolBar--hide'}} {{!isToolBarShown&&isIphoneX?'ToolBar--hideIphoneX':''}}">
+    <view class="content" wx:if="{{type==='answer'}}">
+        <view class="content-left">
+            <button bindtap="handleAnswerVote" class="button like" data-vote-type="up">
+                <image class="like-icon" src="/assets/Arrowup--active.c2b4a1.svg" wx:if="{{voting===1}}"></image>
+                <image class="like-icon" src="/assets/Arrowup.db83f2.svg" wx:else></image>
+                <view class="{{voting===1?'likeDesc likeDesc-active':'likeDesc'}}">
+          {{number.niceNumber(voteupCount)}} 赞同
+        </view>
+            </button>
+            <button bindtap="handleAnswerVote" class="button unlike" data-vote-type="down">
+                <image class="unlike-icon" src="/assets/Arrowdown--active.d99ea2.svg" wx:if="{{voting===-1}}"></image>
+                <image class="unlike-icon" src="/assets/Arrowdown.5ba2d5.svg" wx:else></image>
+            </button>
+        </view>
+        <view class="content-right">
+            <button bindtap="onCommentTap" class="button comment">
+                <image class="icon" src="/assets/Comment.7d806c.svg"></image>
+                <view class="commentDesc">
+          评论 {{commentCount?number.niceNumber(commentCount):''}}
+        </view>
+            </button>
+            <button bindtap="handleShareButtonTap" class="button share" openType="share">
+                <image class="icon" src="/assets/Share.316ce1.svg"></image>
+                <view class="commentDesc">分享</view>
+            </button>
+        </view>
+    </view>
+    <view class="content" wx:if="{{type==='article'}}">
+        <view class="content-left">
+            <button bind:tap="handleArticleVote" class="button like">
+                <image class="like-icon" src="/assets/thumbUp--active.c6e1cd.svg" wx:if="{{voting===1}}"></image>
+                <image class="like-icon" src="/assets/thumbUp.d9faa2.svg" wx:else></image>
+                <view class="{{voting===1?'likeDesc likeDesc-active':'likeDesc'}}">
+          {{number.niceNumber(voteupCount)}} 赞
+        </view>
+            </button>
+        </view>
+        <view class="content-right">
+            <button bindtap="onCommentTap" class="button comment">
+                <image class="icon" src="/assets/Comment.7d806c.svg"></image>
+                <view class="commentDesc">
+          评论 {{commentCount?number.niceNumber(commentCount):''}}
+        </view>
+            </button>
+            <button bindtap="handleShareButtonTap" class="button share" openType="share">
+                <image class="icon" src="/assets/Share.316ce1.svg"></image>
+                <view class="commentDesc">分享</view>
+            </button>
+        </view>
+    </view>
+    <SafeAreaInset></SafeAreaInset>
+</view>
+<wxs module="number" src="../assets/number.a72fe9.wxs" />

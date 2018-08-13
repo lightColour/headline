@@ -1,0 +1,12 @@
+<view class="TabNav-holder"></view>
+<view class="TabNav {{searchIconOpacity===1?'TabNav--shadow':''}}">
+    <view class="TabNav-content">
+        <view bindtap="handleNavItemTap" class="TabNav-link {{activeNav===item.identifier?'isActive':''}}" data-nav-identifier="{{item.identifier}}" wx:for="{{list}}" wx:key="{{item.text}}">
+      {{item.text}}
+    </view>
+        <view class="TabNav-activeDash TabNav-activeDash-{{activeNav}}"></view>
+        <view bindtap="handleSearchIconTap" class="TabNav-searchIconContainer" style="opacity: {{searchIconOpacity}};">
+            <image class="TabNav-searchIcon" src="/assets/search-thick.7ce284.svg"></image>
+        </view>
+    </view>
+</view>

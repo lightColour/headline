@@ -1,0 +1,137 @@
+.u-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.u-thinBorder {
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect width='1' height='.5' y='.5' fill='#d3d3d3'/></svg>");
+}
+
+.u-one-px-border {
+    position: relative;
+}
+
+.u-one-px-border::before {
+    display: block;
+    content: ' ';
+    position: absolute;
+    z-index: 1;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    pointer-events: none;
+    transform: scale(0.5,0.5);
+    border-bottom: solid 0.5px #e3e3e3;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main {
+    flex: 1;
+    background: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06);
+    z-index: 0;
+}
+
+.title {
+    font-size: 19px;
+    padding: 15px;
+    color: #1a1a1a;
+    background-color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06);
+}
+
+.checkAllAnswerBanner {
+    position: fixed;
+    top: 0;
+    height: 45px;
+    background-color: #ffffff;
+    color: #0084ff;
+    font-size: 14px;
+    line-height: 45px;
+    text-align: center;
+    width: 100vw;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    font-weight: 600;
+}
+
+.checkAllAnswerBanner-arrow {
+    height: 12px;
+    width: 12px;
+    margin-left: 5px;
+}
+
+.byline {
+    display: flex;
+    background: #fff;
+}
+
+.byline-content {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.byline-name {
+    font-size: 15px;
+    line-height: 1.2;
+    color: #444444;
+    font-weight: 500;
+}
+
+.byline-bio {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.2;
+    display: block;
+    width: calc(100vw - 24px - 36px - 10px);
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.byline-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+}
+
+.richtext {
+    font-size: 16px;
+}
+
+.content {
+    padding-top: 15px;
+    background-color: #fff;
+}
+
+.content-meta {
+    text-align: left;
+    color: #bfbfbf;
+}
+
+.content-meta text {
+    display: inline-block;
+}
+
+.content-meta text:last-child::before {
+    content: '\B7';
+    margin: 0 6px;
+}

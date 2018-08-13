@@ -1,0 +1,15 @@
+<view bindtap="handleTap">
+    <view class="recommand-item">
+        <view class="recommand-contain">
+            <view class="recommand-title">
+        {{recommand.title}}
+      </view>
+            <view class="recommand-description">
+        {{desc(recommand.content_type,recommand.name,recommand.hot_value,recommand.value)}}
+      </view>
+        </view>
+        <image class="recommand-pic" mode="aspectFill" src="{{recommand.image}}" wx:if="{{recommand.image}}"></image>
+    </view>
+</view>
+<wxs module="img" src="../assets/img.065e87.wxs" />
+<wxs module="desc" src="../assets/desc.50f081.wxs" />

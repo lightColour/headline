@@ -1,0 +1,12 @@
+.summary rich-text,.summary ztext {
+    line-height: 1.6;
+    font-size: inherit;
+}
+
+.excerptContent {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

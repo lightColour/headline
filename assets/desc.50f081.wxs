@@ -1,0 +1,10 @@
+module.exports = (function(type, name, hot, value) {
+    var descMap = ({
+        question: '回答',
+        answer: '赞同',
+        article: '赞',
+    });
+    var leftText = type === 'answer' ? name + '的回答' : hot;
+    var rightText = value + ' ' + descMap[((nt_0 = (type), null == nt_0 ? undefined : 'Number' === nt_0.constructor ? nt_0 : "" + nt_0))];
+    return (leftText + (leftText ? ' · ' : '') + rightText)
+});

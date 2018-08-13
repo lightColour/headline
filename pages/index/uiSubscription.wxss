@@ -1,0 +1,71 @@
+.Subscription-Wrapper {
+    width: 100vw;
+    height: calc(32vw + 38px);
+    opacity: 0;
+    display: none;
+    transition: opacity 300ms;
+}
+
+.Subscription-Wrapper.isVisible {
+    display: block;
+    opacity: 1;
+}
+
+.Subscription {
+    background-color: #edeef0;
+}
+
+.Subscription-Image {
+    display: block;
+    width: 100vw;
+    height: 32vw;
+    background-color: #ffffff;
+}
+
+.Subscription-Content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 32px;
+    padding-bottom: 6px;
+    background-color: #ffffff;
+}
+
+.Subscription-ContentText {
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #999999;
+}
+
+.Subscription-ButtonWrapper {
+    position: relative;
+}
+
+.Subscription-ContentButton {
+    position: absolute;
+    top: 0;
+    display: block;
+    margin-right: 15px;
+    width: 72px;
+    height: 32px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 32px;
+    color: #ffffff;
+    background-color: #0084ff;
+    transition: opacity 200ms;
+    will-change: opacity;
+}
+
+.Subscription-ContentButton--Hide {
+    opacity: 0;
+}
+
+.Subscription-ContentButton--Subscript {
+    position: relative;
+    background-color: #f6f6f6;
+    color: #999999;
+}

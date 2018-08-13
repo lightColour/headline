@@ -1,0 +1,80 @@
+.RecommendItem {
+    margin: 0 7px 7px;
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06);
+    border-radius: 4px;
+}
+
+.RecommendItem-inner {
+    margin-left: 5px;
+    flex-grow: 1;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.RecommendItem-title {
+    display: block;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #1a1a1a;
+}
+
+.RecommendItem-content {
+    margin: 6px 0;
+}
+
+.RecommendItem-summary {
+    max-height: calc(22px * 3);
+    font-size: 15px;
+    line-height: 22px;
+    color: #444444;
+    flex: 1 1 auto;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.RecommendItem-footer {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #999;
+}
+
+.RecommendItem-tag {
+    margin-right: 5px;
+    width: 30px;
+    height: 18px;
+    border-radius: 3px;
+    border: solid 1px #bfbfbf;
+    color: #999;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.RecommendItem-imageFlexContainer {
+    display: flex;
+    width: 100%;
+}
+
+.RecommendItem-imageView {
+    align-self: center;
+    margin-left: 8px;
+    flex: 0 0 auto;
+}
+
+.RecommendItem-image {
+    display: block;
+    width: 105px;
+    height: 70px;
+    border-radius: 5px;
+    object-fit: contain;
+    background-color: #f6f6f6;
+}

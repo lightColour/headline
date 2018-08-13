@@ -1,0 +1,36 @@
+function nullOrLatter(fn) {
+    return ((function(next, prev) {
+        if (next === '') return ('');;
+        if (!next) return (prev);;
+        return (fn(next, prev))
+    }))
+};
+
+function getSize(size) {
+    return ('_' + size)
+};
+var getReplaceSize = nullOrLatter(getSize);
+
+function getQuality(quality) {
+    return (quality + '/')
+};
+var getReplaceQuality = nullOrLatter(getQuality);
+module.exports.imgUrl = (function() {
+    arguments.length = arguments.length;
+    var url = arguments.length > 0 && arguments[(0)] !== undefined ? arguments[(0)] : '';
+    var options = arguments.length > 1 && arguments[(1)] !== undefined ? arguments[(1)] : ({});
+    var quality;
+    var size;
+    var extension;
+    var IMAGE_REG = getRegExp('([a-z|:|/|\x5c.|\x5cd]+)(.com\x5c/)(\x5cd+\x5c/)?([^_.]+)?(_[^.]+)?\x5c.?(\x5cw+)?$');
+    if (typeof options === 'string') {
+        size = options
+    } else {
+        size = options.size;
+        quality = options.quality;
+        extension = options.extension
+    };
+    return (url.replace(IMAGE_REG, (function(_, m1, m2, m3, m4, m5, m6) {
+        return ([m1, m2, getReplaceQuality(quality, m3), m4, getReplaceSize(size, m5), extension ? '.' + extension : (m6 && ('.' + m6))].join(''))
+    })))
+});

@@ -1,0 +1,4 @@
+<view class="thumbnails thumbnails-class" wx:if="{{info.count>0}}">
+    <image class="image" mode="aspectFill" src="{{info.thumbnails[0].url}}" wx:if="{{info.thumbnails[0].type==='image'}}"></image>
+    <ui-video catch:tap="stopPropagation" lensId="{{info.thumbnails[0].attached_info}}" poster="{{info.thumbnails[0].url}}" wx:elif="{{info.thumbnails[0].type==='video'}}"></ui-video>
+</view>

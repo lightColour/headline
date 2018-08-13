@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "文章",
+    "onReachBottomDistance": 2,
+    "usingComponents": {
+        "ztext-auto": "/_/_node_modules_/@wxa/ztext/lib/ztext-auto",
+        "ui-video": "/components/VideoThumbnail",
+        "ToolBar": "/zhihu/ToolBar",
+        "SafeAreaInset": "/components/SafeAreaInset",
+        "OpenInApp": "/components/OpenInApp",
+        "CommentPanel": "/zhihu/CommentPanel"
+    }
+}

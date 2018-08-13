@@ -1,0 +1,14 @@
+<view bindtap="handleTap" class="RecommendItem u-thinBorder" data-type="{{item.type}}" data-urltoken="{{item.urltoken}}">
+    <view class="RecommendItem-inner">
+        <view class="RecommendItem-title">{{item.title}}</view>
+        <view class="RecommendItem-content RecommendItem-imageFlexContainer" wx:if="{{item.excerpt}}">
+            <view class="RecommendItem-summary" wx:if="{{item.excerpt}}">
+        {{item.excerpt}}
+      </view>
+            <view class="RecommendItem-imageView" wx:if="{{item.image}}">
+                <image class="RecommendItem-image" mode="aspectFill" src="{{item.image}}"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="formatNumber" src="../../assets/formatNumber.dcfc79.wxs" />

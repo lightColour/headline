@@ -1,0 +1,79 @@
+.Index {
+    position: relative;
+    height: calc(100vh - 43px);
+    transition: transform 300ms;
+    z-index: 1;
+    background-color: #fafafa;
+}
+
+.Index.withSubscription {
+    transform: translateY(calc(32vw + 38px + 10px));
+}
+
+.Index-Bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52.5px;
+    font-size: 15px;
+    color: #999999;
+}
+
+.NetWorkErrorToast {
+    width: 196px;
+}
+
+.RecommendPage-Bottom {
+    height: 52.5px;
+    font-size: 15px;
+    line-height: 52.5px;
+    text-align: center;
+    color: #999999;
+    background-color: #fafafa;
+}
+
+.RecommendList {
+    background-color: #fafafa;
+    padding-top: 7px;
+    margin-top: -7px;
+}
+
+.AbsolutelyTop {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.06);
+}
+
+.SearchBar {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 5px 14px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.08);
+    background: #fff;
+}
+
+.SearchBar-recommend {
+    margin-bottom: 7px;
+}
+
+.SearchBar-fakeInput {
+    border-radius: 17.5px;
+    background: #ebebeb;
+    padding: 6px 0;
+    line-height: 18px;
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+}
+
+.Index-searchIcon {
+    width: 13px;
+    height: 13px;
+    vertical-align: -2px;
+}
+
+.swiper-list {
+    height: 100%;
+}

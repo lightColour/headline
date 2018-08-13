@@ -1,0 +1,145 @@
+.u-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.u-thinBorder {
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect width='1' height='.5' y='.5' fill='#d3d3d3'/></svg>");
+}
+
+.u-one-px-border {
+    position: relative;
+}
+
+.u-one-px-border::before {
+    display: block;
+    content: ' ';
+    position: absolute;
+    z-index: 1;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    pointer-events: none;
+    transform: scale(0.5,0.5);
+    border-bottom: solid 0.5px #e3e3e3;
+}
+
+.commentPanelMask {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.commentPanel {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+    height: calc(100vh - 20px);
+    width: 100vw;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #ffffff;
+}
+
+.commentPanel-header {
+    height: 49px;
+    position: relative;
+    text-align: center;
+}
+
+.commentPanel-content {
+    height: calc(100vh - 20px - 49px);
+    position: relative;
+}
+
+.commentPanel-content--withPadding {
+    padding-top: 12px;
+}
+
+.commentPanel-close {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    padding: 5px;
+}
+
+.commentPanel-headerTitle {
+    color: #1a1a1a;
+    font-size: 17px;
+    padding-top: 12px;
+    font-weight: 600;
+}
+
+.commentPanel-conetentTitle {
+    height: 30px;
+    background-color: #f6f6f6;
+    font-size: 14px;
+    color: #999999;
+    line-height: 30px;
+    padding: 6px 0 6px 12px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.childCommentsContainer {
+    margin-left: 40px;
+}
+
+.spinner {
+    height: 16px;
+    width: 16px;
+    display: block;
+    margin: 0 auto;
+    animation: rotate-center 0.6s linear infinite both;
+}
+
+.commentPanel-contentEnd {
+    text-align: center;
+    font-size: 10px;
+    padding: 10px;
+    color: #bfbfbf;
+}
+
+@keyframes rotate-center {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.commentPanel-noComment {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-80%);
+}
+
+.commentPanel-noCommentLink {
+    color: #0084ff;
+    display: inline;
+    font-weight: 600;
+}
+
+.commentPanel-noCommentBg {
+    width: 150px;
+    height: 94px;
+}
+
+.commentPanel-noCommentText {
+    color: #bfbfbf;
+    font-size: 15px;
+}

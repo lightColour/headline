@@ -1,0 +1,5 @@
+<view class="offscreen-holder">
+    <view class="offscreen" style="font-size: {{fontSize}}px">
+        <slot></slot>
+    </view>
+</view>

@@ -1,0 +1,82 @@
+.TabNav-holder {
+    height: 42px;
+}
+
+.TabNav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.TabNav--shadow {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.06);
+}
+
+.TabNav-content {
+    display: flex;
+    justify-content: center;
+    height: 42px;
+    background: #fff;
+}
+
+.TabNav-link+.TabNav-link {
+    margin-left: 2px;
+}
+
+.TabNav-link {
+    position: relative;
+    width: 110px;
+    height: 22px;
+    padding-bottom: 10px;
+    margin-top: 7px;
+    line-height: 22px;
+    text-align: center;
+    font-size: 16px;
+    color: #646464;
+    transition: color .35s;
+}
+
+.TabNav-link.isActive {
+    color: #0084ff;
+    font-weight: 600;
+}
+
+.TabNav-activeDash {
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    border-radius: 4px;
+    background-image: linear-gradient(to right,#59b3ff 0%,#0084ff);
+    left: 50%;
+    bottom: 7px;
+    transition: transform .35s;
+}
+
+.TabNav-activeDash-0 {
+    transform: translateX(calc(-55px - 50%));
+}
+
+.TabNav-activeDash-1 {
+    transform: translateX(calc(55px - 50%));
+}
+
+.TabNav-searchIconContainer {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 27px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f6f6f6;
+}
+
+.TabNav-searchIcon {
+    width: 20px;
+    height: 20px;
+}

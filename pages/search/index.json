@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "Spinner": "/components/Spinner"
+    },
+    "onReachBottomDistance": 1000
+}

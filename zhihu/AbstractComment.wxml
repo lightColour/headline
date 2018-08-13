@@ -1,0 +1,22 @@
+<view class="abstractComment">
+    <view class="abstractComment-title">评论</view>
+    <view class="abstractCommentArea" wx:if="{{abstractComments&&abstractComments.length>0}}">
+        <view wx:for="{{abstractComments}}" wx:for-item="comment" wx:key="{{comment.id}}">
+            <CommentItem comment="{{comment}}"></CommentItem>
+        </view>
+        <view bindtap="onViewAllTap" class="comment-viewAllBtn">
+      查看全部 ({{formatNumber(commentCount)}})
+    </view>
+    </view>
+    <view class="abstractComment-noComment" wx:else>
+        <image class="abstractComment-noCommentBg" src="/assets/noCommentBg.49259e.svg"></image>
+        <view class="abstractComment-noCommentText">
+      还没有评论，
+      <navigator class="abstractComment-noCommentLink" openType="reLaunch" url="/pages/index/index">去首页
+      </navigator>
+      看看热门内容
+    </view>
+    </view>
+    <SafeAreaInset></SafeAreaInset>
+</view>
+<wxs module="formatNumber" src="../assets/formatNumber.dcfc79.wxs" />

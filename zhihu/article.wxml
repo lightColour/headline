@@ -1,0 +1,30 @@
+<view class="page" wx:if="{{post}}">
+    <image class="TitleImage" mode="widthFix" src="{{post.image_url}}" wx:if="{{post.image_url}}"></image>
+    <view class="title">
+    {{post.title}}
+  </view>
+    <view class="main">
+        <view class="byline">
+            <image class="byline-avatar" src="{{img.imgUrl( post.author.avatar_url,{size:'l'} )}}"></image>
+            <view class="byline-content">
+                <view class="byline-name">{{post.author.name}}</view>
+                <view class="byline-bio" wx:if="{{post.author.headline}}">{{post.author.headline}}</view>
+            </view>
+        </view>
+        <view class="content">
+            <ui-video bind:expand="handleVideoLoadMore" videoId="{{videoId}}" wx:if="{{shouldShowVideoOnly&&videoId}}"></ui-video>
+            <ztext-auto class="richtext" html="{{post.content}}" wx:if="{{!shouldShowVideoOnly}}"></ztext-auto>
+            <view class="content-meta" wx:if="{{!shouldShowVideoOnly}}">
+                <view>发布于 {{fromNow(post.created*1000)}}
+          <text class="content-meta-desc">著作权归作者所有</text>
+                </view>
+            </view>
+            <SafeAreaInset></SafeAreaInset>
+        </view>
+    </view>
+    <ToolBar bindopenCommentPanel="openCommentPanel" commentCount="{{post.comment_count}}" entryId="{{entryId}}" isToolBarShown="{{isToolBarShown}}" type="article" voteupCount="{{post.voteup_count}}" voting="{{post.voting}}" wx:if="{{post}}"></ToolBar>
+    <CommentPanel bindcloseCommentPanel="closeCommentPanel" entryId="{{entryId}}" entryType="article" wx:if="{{showCommentPanel}}"></CommentPanel>
+    <OpenInApp url="{{isPromotion?'promotion':'articles'}}/{{entryId}}"></OpenInApp>
+</view>
+<wxs module="fromNow" src="../assets/fromNow.4e1ce3.wxs" />
+<wxs module="img" src="../assets/img.065e87.wxs" />

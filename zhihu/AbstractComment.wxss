@@ -1,0 +1,41 @@
+.abstractComment {
+    padding: 20px 0px;
+    background-color: #ffffff;
+    margin: 0 0 10px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06);
+}
+
+.abstractComment-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #1a1a1a;
+    padding-left: 15px;
+}
+
+.abstractComment-noComment {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.abstractComment-noCommentLink {
+    color: #0084ff;
+    display: inline;
+    font-weight: 600;
+}
+
+.abstractComment-noCommentBg {
+    width: 150px;
+    height: 94px;
+}
+
+.abstractComment-noCommentText {
+    color: #bfbfbf;
+    font-size: 15px;
+}
+
+.comment-viewAllBtn {
+    margin-left: 54px;
+    color: #8590a6;
+    font-size: 14px;
+    font-weight: 600;
+}

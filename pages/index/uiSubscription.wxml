@@ -1,0 +1,15 @@
+<view class="{{cx('Subscription-Wrapper','isVisible',isVisible)}}">
+    <view class="Subscription">
+        <image class="Subscription-Image" src="/assets/header.0798d9.png"></image>
+        <view class="Subscription-Content">
+            <text class="Subscription-ContentText">每晚 8 点通知你榜单最热内容</text>
+            <view class="Subscription-ButtonWrapper">
+                <button class="Subscription-ContentButton Subscription-ContentButton--Subscript">已开启</button>
+                <button bind:tap="handleSubscribe" class="{{cx('Subscription-ContentButton','Subscription-ContentButton--Hide',!showButton)}}">
+          开启通知
+        </button>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="cx" src="../../assets/cx.68d766.wxs" />

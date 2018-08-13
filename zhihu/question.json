@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "问题",
+    "usingComponents": {
+        "ztext": "/_/_node_modules_/@wxa/ztext/lib/ztext",
+        "ztext-auto": "/_/_node_modules_/@wxa/ztext/lib/ztext-auto",
+        "uiFooter": "/zhihu/uiFooter",
+        "uiSummary": "/zhihu/uiSummary",
+        "uiThumbnailInfo": "/zhihu/uiThumbnailInfo",
+        "OpenInApp": "/components/OpenInApp"
+    }
+}

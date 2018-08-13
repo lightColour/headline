@@ -1,0 +1,30 @@
+.HotRecommand {
+    padding: 20px 0 0;
+    background-color: #ffffff;
+}
+
+.HotRecommand-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #1a1a1a;
+    padding-left: 15px;
+    margin-bottom: 6px;
+}
+
+.HotRecommands-more {
+    text-align: center;
+    color: #bfbfbf;
+    font-size: 15px;
+    line-height: 81px;
+    background-color: #fafafa;
+}
+
+.HotRecommands-moreLink {
+    color: #0084ff;
+    display: inline;
+    font-weight: 600;
+}
+
+.recommand-loading {
+    text-align: center;
+}

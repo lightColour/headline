@@ -1,0 +1,4 @@
+function formatNumber(number) {
+    return (typeof number === 'number' ? number.toLocaleString() : number)
+};
+module.exports = formatNumber;

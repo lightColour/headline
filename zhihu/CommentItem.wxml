@@ -1,0 +1,34 @@
+<view class="comment-item">
+    <image class="comment-avatar" src="{{img.imgUrl( comment.author.avatar_url,{size:'l'} )||img.imgUrl( comment.author.member.avatar_url,{size:'l'} )}}"></image>
+    <view class="comment-desc">
+        <view class="comment-descHeader">
+            <view class="comment-nameArea">
+                <view class="comment-name">
+          {{comment.author.name||comment.author.member.name}}{{comment.is_author?'（作者）':''}}
+        </view>
+                <image class="CommentReplyIcon" src="/assets/CommentReply.ebf7cb.svg" wx:if="{{comment.reply_to_author}}"></image>
+                <view class="comment-name" wx:if="{{comment.reply_to_author}}">
+          {{comment.reply_to_author.member.name}}
+        </view>
+            </view>
+            <view bindtap="handleVoteUpClick" class="comment-voteUp" data-id="{{comment.id}}">
+                <view class="voteup-iconContainer">
+                    <image class="voteup-icon" src="/assets/thumbUp-border--active.c49db8.svg" wx:if="{{comment.voting}}"></image>
+                    <image class="voteup-icon" src="/assets/thumbUp-border.c315ae.svg" wx:else></image>
+                </view>
+                <view class="voteup-numContainer">
+                    <view class="voteup-num voteup-num--active" wx:if="{{comment.voting}}">
+            {{comment.vote_count>0?comment.vote_count:'赞'}}
+          </view>
+                    <view class="voteup-num" wx:else>
+            {{comment.vote_count>0?comment.vote_count:'赞'}}
+          </view>
+                </view>
+            </view>
+        </view>
+        <rich-text class="comment-content" nodes="{{comment.content}}"></rich-text>
+        <view class="comment-time">{{date.toSmartDateTimeString(comment.created_time)}}</view>
+    </view>
+</view>
+<wxs module="date" src="../assets/date.7fb565.wxs" />
+<wxs module="img" src="../assets/img.065e87.wxs" />

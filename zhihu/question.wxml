@@ -1,0 +1,47 @@
+<view class="page">
+    <view class="qustion" wx:if="{{question}}">
+        <view class="qustion-title">
+      {{question.title}}
+    </view>
+        <view class="qustion-content">
+            <uiSummary detail="{{question.detail}}" excerpt="{{question.excerpt}}">
+                <view slot="excerptBefore">
+                    <uiThumbnailInfo info="{{question.thumbnail_info}}"></uiThumbnailInfo>
+                </view>
+                <view class="expandText" slot="button">
+          展开问题描述
+          <image class="expandTextCaret" src="/assets/CaretDown.469969.svg"></image>
+                </view>
+            </uiSummary>
+        </view>
+    </view>
+    <view class="answers" wx:if="{{question&&answers}}">
+        <view class="answers-switch">
+            <view class="answers-switchTitle">
+        {{sortBy==='default'?'热门回答':'最新回答'}}
+      </view>
+            <view bind:tap="handleSwitch" class="answers-switchButton">
+                <image class="answers-switchIcon" src="/assets/Switch.0dd758.svg"></image>
+        {{sortBy==='default'?'切换至最新':'切换至热门'}}
+      </view>
+        </view>
+        <navigator bindtap="handleAnswerItemClick" class="answer" openType="{{openType}}" url="/zhihu/answer?id={{answer.id}}&source=question" wx:for="{{answers}}" wx:for-item="answer" wx:key="{{answer.id}}">
+            <view class="byline">
+                <image class="byline-avatar" src="{{img.imgUrl( answer.author.avatar_url,{size:'l'} )}}"></image>
+                <view class="byline-name">{{answer.author.name}}</view>
+            </view>
+            <uiThumbnailInfo info="{{answer.thumbnail_info}}" thumbnailsClass="answer-thumbnails"></uiThumbnailInfo>
+            <view class="answer-content">
+                <rich-text nodes="{{answer.excerpt+'<span />'}}"></rich-text>
+            </view>
+            <view class="answer-meta">
+        {{formatNumber(answer.voteup_count)}} 赞同 · {{fromNow(answer.created_time*1000)}}
+      </view>
+        </navigator>
+    </view>
+    <uiFooter entryId="{{entryId}}" entryType="question" excerpt="{{question.excerpt}}" title="{{question.title}}" wx:if="{{question}}"></uiFooter>
+    <OpenInApp url="question/{{entryId}}"></OpenInApp>
+</view>
+<wxs module="fromNow" src="../assets/fromNow.4e1ce3.wxs" />
+<wxs module="formatNumber" src="../assets/formatNumber.dcfc79.wxs" />
+<wxs module="img" src="../assets/img.065e87.wxs" />

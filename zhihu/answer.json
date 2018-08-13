@@ -1,0 +1,15 @@
+{
+    "navigationBarTitleText": "回答",
+    "backgroundColor": "#fafafa",
+    "onReachBottomDistance": 2,
+    "usingComponents": {
+        "ztext-auto": "/_/_node_modules_/@wxa/ztext/lib/ztext-auto",
+        "SafeAreaInset": "/components/SafeAreaInset",
+        "OpenInApp": "/components/OpenInApp",
+        "AbstractComment": "/zhihu/AbstractComment",
+        "HotRecommand": "/zhihu/HotRecommand",
+        "ToolBar": "/zhihu/ToolBar",
+        "ui-video": "/components/VideoThumbnail",
+        "CommentPanel": "/zhihu/CommentPanel"
+    }
+}

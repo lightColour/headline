@@ -1,0 +1,141 @@
+.u-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.u-thinBorder {
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect width='1' height='.5' y='.5' fill='#d3d3d3'/></svg>");
+}
+
+.u-one-px-border {
+    position: relative;
+}
+
+.u-one-px-border::before {
+    display: block;
+    content: ' ';
+    position: absolute;
+    z-index: 1;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    pointer-events: none;
+    transform: scale(0.5,0.5);
+    border-bottom: solid 0.5px #e3e3e3;
+}
+
+.HotItem--wrapper {
+    padding: 12px 12px 0 12px;
+    background-color: #ffffff;
+}
+
+.HotItem {
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.HotItem-Content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.HotItem-Header {
+    display: flex;
+}
+
+.HotItem-Index {
+    font-size: 11px;
+    width: 25px;
+    height: 17px;
+    line-height: 17px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.HotItem-meta {
+    margin-left: 5px;
+    font-size: 12px;
+    color: #bfbfbf;
+}
+
+.HotItem-Index--red {
+    color: #ffffff;
+    background-image: linear-gradient(to left,#ffce25,#ffaf13);
+}
+
+.HotItem-Index--gold {
+    color: #c2a469;
+    background-color: rgba(194,164,105,0.12);
+}
+
+.HotItem-Content {
+    margin-top: 7px;
+    overflow: hidden;
+}
+
+.HotItem-ContentTitle {
+    display: block;
+    font-size: 17px;
+    line-height: 24px;
+    color: #1a1a1a;
+    font-weight: 500;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.HotItem-ContentExcerpt {
+    margin-top: 4px;
+    font-size: 15px;
+    line-height: 22px;
+    color: #444444;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.HotItem-ContentDetail {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 17px;
+    color: #999;
+}
+
+.HotItem-ArticleTag {
+    margin-right: 5px;
+    width: 30px;
+    height: 18px;
+    border-radius: 3px;
+    border: solid 1px #bfbfbf;
+    color: #999;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.HotItem-ImageView {
+    align-self: center;
+    margin-left: 8px;
+}
+
+.HotItem-Image {
+    display: block;
+    width: 105px;
+    height: 70px;
+    border-radius: 5px;
+    object-fit: contain;
+    background-color: #f6f6f6;
+}

@@ -1,0 +1,72 @@
+<view class="SearchBar">
+    <view class="SearchBar-searchArea">
+        <image class="SearchBar-searchIcon" src="/assets/search.ccb702.svg"></image>
+        <input autoFocus bindblur="handleSearchBlur" bindconfirm="handleSearchConfirm" bindfocus="handleSearchFocus" bindinput="handleSearchInput" class="SearchBar-input" confirmType="搜索" placeholder="{{presetWord?presetWord.query:'有问题，找答案'}}" placeholderStyle="SearchBar-placeholder" value="{{searchInputText}}"></input>
+    </view>
+    <image bindtap="handleSearchClear" class="SearchBar-clearIcon" src="/assets/clear-circle.2b2a51.svg" wx:if="{{searchText}}"></image>
+    <button catchtap="handleSearchCancel" class="SearchBar-btn">取消</button>
+</view>
+<view class="SearchBar-blank"></view>
+<view class="RecommendArea" wx:if="{{!searchText}}">
+    <view class="TopSearchWords">
+        <view class="TopSearchWords-title">知乎热搜</view>
+        <view bindtap="handlePresetWordTap" class="TopSearchWords-item" data-id="{{presetWord.id}}" data-query="{{presetWord.real_query}}" wx:if="{{presetWord}}">
+            <image class="TopSearchWords-hot" src="/assets/search.ccb702.svg"></image>
+      {{presetWord.query}}
+    </view>
+        <view bindtap="handleRecommendWordTap" class="TopSearchWords-item" data-query="{{topWord.query}}" data-type="topWord" wx:for="{{topSearchWords}}" wx:for-item="topWord" wx:key="{{index}}">
+            <image class="TopSearchWords-hot" src="/assets/Hot.fe42c7.svg" wx:if="{{index<3}}"></image>
+      {{topWord.display_query}}
+    </view>
+    </view>
+    <view class="HistorySearchWords" wx:if="{{historySearchWords.length>0}}">
+        <view class="HistorySearchWords-title">搜索历史</view>
+        <view bindtap="handleRecommendWordTap" class="HistorySearchWords-item u-one-px-border" data-query="{{historyWord}}" data-type="history" wx:if="{{index<10}}" wx:for="{{historySearchWords}}" wx:for-item="historyWord" wx:key="{{index}}">
+            <image class="HistorySearchWords-historyIcon" src="/assets/SearchHistory.a5be84.svg"></image>
+            <view class="HistorySearchWords-content">{{historyWord}}</view>
+            <image catchtap="handleRemoveHistoryItem" class="TopSearchWords-clearIcon" data-word="{{historyWord}}" src="/assets/Clear.c0404c.svg"></image>
+        </view>
+        <view bindtap="handleEmptySearchHistory" class="HistorySearchWords-empty u-one-px-border" wx:if="{{historySearchWords.length>1}}">清空搜索历史
+    </view>
+    </view>
+</view>
+<view class="SuggestArea" wx:if="{{searchText&&isSearchInputFocus}}">
+    <view bindtap="handleRecommendWordTap" class="SuggestItem u-one-px-border" data-query="{{suggestWord.query}}" wx:for="{{suggestSearchWords}}" wx:for-item="suggestWord" wx:key="{{index}}">
+        <text class="SuggestItem-content">
+            <text class="SuggestItem-matching">{{suggestWord.matching}}</text>
+            <text class="SuggestItem-mismatching">{{suggestWord.mismatching}}</text>
+        </text>
+        <image class="SuggestItem-nwArrowIcon" src="/assets/NwArrow.3d0b9b.svg"></image>
+    </view>
+    <view bindtap="handleRecommendWordTap" class="SuggestArea-searchCurrent u-one-px-border" data-query="{{searchText}}">
+    查看「{{searchText}}」的搜索结果
+  </view>
+</view>
+<view class="Search-center" wx:if="{{isLoadingResult&&searchText&&!result.data}}">
+    <Spinner></Spinner>
+</view>
+<view class="Search-resultContainer" wx:if="{{!isLoadingResult&&!isSearchInputFocus}}">
+    <block wx:if="{{result.data.length>0}}">
+        <view class="Search-resultItem" wx:for="{{result.data}}" wx:for-item="resultItem" wx:key="{{resultItem.id}}">
+            <rich-text bindtap="handleSearchResultTap" class="Search-highlight-title" data-url="{{url.getTitleUrl(resultItem)}}" nodes="{{resultItem.highlight.title}}" wx:if="{{resultItem.highlight.title.length}}"></rich-text>
+            <view class="{{resultItem.object.thumbnail_info.thumbnails.length<3?'ResultItem-descriptionArea':'ResultItem-descriptionArea ResultItem-descriptionArea--column'}}">
+                <rich-text bindtap="handleSearchResultTap" class="{{resultItem.object.thumbnail_info.thumbnails.length>0&&resultItem.object.thumbnail_info.thumbnails.length<3?'Search-highlight-description Search-highlight-description--threeLine':'Search-highlight-description Search-highlight-description--twoLine'}}" data-url="{{url.getDescriptionUrl(resultItem)}}" nodes="{{resultItem.highlight.description}}" wx:if="{{resultItem.highlight.description.length}}"></rich-text>
+                <image class="ResultItem-descriptionArea-singleImg" src="{{resultItem.object.thumbnail_info.thumbnails[0].url}}" wx:if="{{resultItem.object.thumbnail_info.thumbnails.length>0&&resultItem.object.thumbnail_info.thumbnails.length<3}}"></image>
+                <view class="ResultItem-descriptionArea-imgs" wx:if="{{resultItem.object.thumbnail_info.thumbnails.length>=3}}">
+                    <image class="ResultItem-descriptionArea-imgs-item" key="{{index}}" mode="aspectFill" src="{{img.url}}" wx:if="{{index<3}}" wx:for="{{resultItem.object.thumbnail_info.thumbnails}}" wx:for-item="img"></image>
+                </view>
+            </view>
+            <view class="Search-questionMeta" wx:if="{{resultItem.object.type==='question'}}">
+        {{resultItem.object.answer_count}} 回答
+      </view>
+            <view class="Search-articleMeta" wx:if="{{resultItem.object.type==='article'}}">
+        文章
+      </view>
+        </view>
+        <view class="Search-loading" wx:if="{{!result.paging.is_end}}">
+            <Spinner></Spinner>
+        </view>
+    </block>
+    <view class="Search-EmptyResult" wx:if="{{result.data.length===0}}">没有找到相应内容</view>
+</view>
+<wxs module="url" src="../../assets/getUrl.baad23.wxs" />

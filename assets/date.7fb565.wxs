@@ -1,0 +1,54 @@
+function isInvalid(date) {
+    return (date.toString() === 'Invalid Date')
+};
+
+function parseInputTime(any) {
+    var then;
+    if (typeof any === 'number') {
+        then = getDate(any * 1000)
+    } else {
+        then = getDate(any)
+    };
+    return (isInvalid(then) ? '' : then)
+};
+
+function pad(num) {
+    var str = num.toString();
+    return (str.length === 1 ? ('0' + str) : str)
+};
+
+function toDateString(any) {
+    var then = parseInputTime(any);
+    if (!then) {
+        return ('')
+    };
+    var today = getDate();
+    today.setHours(0, 0, 0, 0);
+    var currentMonth = then.getMonth() + 1;
+    var currentDate = then.getDate();
+    if (today.getFullYear() === then.getFullYear()) {
+        return (pad(currentMonth) + '/' + pad(currentDate))
+    };
+    return (then.getFullYear().toString().slice(-2) + '/' + pad(currentMonth) + '/' + pad(currentDate))
+};
+
+function toSmartDateTimeString(any) {
+    var then = parseInputTime(any);
+    if (!then) {
+        return ('')
+    };
+    var ts = then.getTime();
+    var oneDay = 24 * 3600 * 1000;
+    var today = getDate();
+    today.setHours(0, 0, 0, 0);
+    var midnight = today.valueOf();
+    if (ts > midnight) {
+        return (pad(then.getHours()) + ':' + pad(then.getMinutes()))
+    } else if (ts > midnight - oneDay) {
+        return ('昨天 ' + pad(then.getHours()) + ':' + pad(then.getMinutes()))
+    } else if (ts > midnight - oneDay * 2) {
+        return ('前天 ' + pad(then.getHours()) + ':' + pad(then.getMinutes()))
+    };
+    return (toDateString(any))
+};
+module.exports.toSmartDateTimeString = toSmartDateTimeString;

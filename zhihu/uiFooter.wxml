@@ -1,0 +1,15 @@
+<view class="footer-holder"></view>
+<view class="footer">
+    <view class="content">
+        <navigator bindtap="handleIndexButtonTap" class="button" openType="reLaunch" url="/pages/index/index">
+            <image class="icon" src="/assets/WechatHome.bae2c6.svg"></image>
+      首页
+    </navigator>
+        <button bindtap="handleShareButtonTap" class="button" openType="share">
+            <image class="icon" src="/assets/WechatShare.45de1b.svg"></image>
+      分享
+    </button>
+    </view>
+    <SafeAreaInset></SafeAreaInset>
+</view>
+<wxs module="urlUtils" src="../assets/urlUtils.9e9247.wxs" />

@@ -1,0 +1,12 @@
+module.exports.getTitleUrl = (function(searchResult) {
+    if (['answer', 'question'].indexOf(searchResult.object.type) !== -1) {
+        var object = searchResult.object;
+        return ('/zhihu/question?id\x3d' + (object.question ? object.question.id : object.id) + '\x26source\x3dsearch')
+    };
+    if (searchResult.object.type === 'article') {
+        return ('/zhihu/article?id\x3d' + searchResult.object.id + '\x26source\x3dsearch')
+    }
+});
+module.exports.getDescriptionUrl = (function(searchResult) {
+    return ('/zhihu/' + searchResult.object.type + '?id\x3d' + searchResult.object.id + '\x26source\x3dsearch')
+});

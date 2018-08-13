@@ -1,0 +1,24 @@
+<view bindtap="handleTap" class="HotItem--wrapper">
+    <view class="u-one-px-border HotItem">
+        <view class="HotItem-Content-wrapper">
+            <view class="HotItem-Header">
+                <view class="{{cx('HotItem-Index','HotItem-Index--'+item.indexColor)}}">
+          {{index+1>10?index+1:'0'+index+1}}
+        </view>
+                <view class="HotItem-meta">
+          {{item.metrics}}
+        </view>
+            </view>
+            <view class="HotItem-Content">
+                <view class="HotItem-ContentTitle button--normalize">{{item.title}}</view>
+                <view class="HotItem-ContentExcerpt button--normalize" wx:if="{{item.excerpt}}">
+          {{item.excerpt}}
+        </view>
+            </view>
+        </view>
+        <view class="HotItem-ImageView" wx:if="{{item.image}}">
+            <image class="HotItem-Image" mode="aspectFill" src="{{item.image}}"></image>
+        </view>
+    </view>
+</view>
+<wxs module="cx" src="../../assets/cx.68d766.wxs" />

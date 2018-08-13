@@ -1,0 +1,96 @@
+.toolBar-holder {
+    height: 48px;
+}
+
+.toolBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: #fff;
+    border-top: 1px solid #ebebeb;
+    border-image-slice: 1 0 1;
+    transition: transform 0.3s;
+    border-image-source: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect width='1' height='.5' y='.5' fill='#d3d3d3'/></svg>");
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 48px;
+    color: #808080;
+    font-weight: 600;
+}
+
+.content-left {
+    display: flex;
+    flex: 0 0 auto;
+    margin-left: 12px;
+}
+
+.content-right {
+    display: flex;
+    font-size: 11px;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    margin-right: 12px;
+}
+
+.like,.unlike {
+    height: 32px;
+    border-radius: 5px;
+    background-color: rgba(153,153,153,0.08);
+    padding: 7.5px;
+    flex: 0 0 auto;
+}
+
+.like-icon,.unlike-icon {
+    height: 12px;
+    width: 11px;
+}
+
+.unlike {
+    padding: 10px 15px;
+    margin-left: 6px;
+}
+
+.likeDesc {
+    flex: 1 1 auto;
+    font-size: 13px;
+    padding-left: 7px;
+    padding-right: 6px;
+}
+
+.likeDesc-active {
+    color: #0084ff;
+}
+
+.comment,.share {
+    flex-direction: column;
+    min-width: 50px;
+}
+
+.comment {
+    margin-right: 10px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.ToolBar--hide {
+    transform: translateY(48px);
+}
+
+.ToolBar--hideIphoneX {
+    transform: translateY(68px);
+}

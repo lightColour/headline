@@ -1,0 +1,39 @@
+.TopToast {
+    position: fixed;
+    z-index: 990;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100vw;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 15px;
+    background-color: #fff;
+    color: #0084ff;
+}
+
+.TopToast.fx-active {
+    animation: 300ms topToastSlideIn ease-in both;
+}
+
+.TopToast.fx-leave {
+    animation: 300ms topToastSlideOut ease-out both;
+}
+
+@keyframes topToastSlideIn {
+    0% {
+        transform: translateY(-40px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes topToastSlideOut {
+    100% {
+        transform: translateY(-40px);
+    }
+}

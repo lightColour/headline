@@ -1,0 +1,24 @@
+function removeZero(numStr) {
+    var index = numStr.indexOf('.0');
+    return (index === numStr.length - 2 ? numStr.slice(0, index) : numStr)
+};
+
+function niceNumber(num) {
+    if (typeof num !== 'number') {
+        return ('')
+    };
+    if (num < 1000) {
+        return (num.toString())
+    };
+    if (num < 10000) {
+        return (removeZero((num / 1000).toFixed(1)) + 'K')
+    };
+    if (num < 1000000) {
+        return (Math.floor(num / 1000) + 'K')
+    };
+    if (num < 1000000000) {
+        return (Math.floor(num / 1000000) + 'M')
+    };
+    return (Math.floor(num / 1000000000) + 'G')
+};
+module.exports.niceNumber = niceNumber;

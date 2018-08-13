@@ -1,0 +1,49 @@
+<view bindtap="closeCommentPanel" class="commentPanelMask"></view>
+<view class="commentPanel">
+    <view class="commentPanel-header u-one-px-border">
+        <image bindtap="closeCommentPanel" class="commentPanel-close" src="/assets/Close.20a597.svg"></image>
+        <view class="commentPanel-headerTitle" wx:if="{{commentsData.common_counts}}">
+      全部 {{formatNumber(commentsData.common_counts)}} 条评论
+    </view>
+        <view class="commentPanel-headerTitle" wx:else>评论</view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="loadComments" class="{{commentsData.featured_counts?'commentPanel-content':'commentPanel-content commentPanel-content--withPadding'}}" lowerThreshold="{{200}}">
+        <view class="commentPanel-conetentTitle" wx:if="{{commentsData.featured_counts}}">
+      精选评论 ({{commentsData.featured_counts}})
+    </view>
+        <view class="commentPanel-commentItem" wx:for="{{featuredComments}}" wx:for-item="comment" wx:key="{{comment.id}}">
+            <CommentItem comment="{{comment}}"></CommentItem>
+            <view class="childCommentsContainer" wx:if="{{comment.child_comments.length>0}}">
+                <view class="childComment" wx:for="{{comment.child_comments}}" wx:for-item="childComment" wx:key="{{childComment.id}}">
+                    <CommentItem comment="{{childComment}}"></CommentItem>
+                </view>
+            </view>
+        </view>
+        <view class="commentPanel-conetentTitle" wx:if="{{commentsData.featured_counts}}">
+      评论 ({{commentsData.common_counts}})
+    </view>
+        <view class="comment-item" wx:for="{{commonComments}}" wx:for-item="comment" wx:key="{{comment.id}}">
+            <CommentItem comment="{{comment}}"></CommentItem>
+            <view class="childCommentsContainer" wx:if="{{comment.child_comments.length>0}}">
+                <view class="childComment" wx:for="{{comment.child_comments}}" wx:for-item="childComment" wx:key="{{childComment.id}}">
+                    <CommentItem comment="{{childComment}}"></CommentItem>
+                </view>
+            </view>
+        </view>
+        <view class="commentPanel-contentEnd">
+            <image class="spinner" src="/assets/Spinner.4ce9f6.svg" wx:if="{{!isEnd}}"></image>
+            <view wx:elif="{{featuredComments.length>0||commonComments.length>0}}">没有更多了</view>
+            <view class="commentPanel-noComment" wx:else>
+                <image class="commentPanel-noCommentBg" src="/assets/noCommentBg.49259e.svg"></image>
+                <view class="commentPanel-noCommentText">
+          还没有评论，
+          <navigator class="commentPanel-noCommentLink" openType="reLaunch" url="/pages/index/index">
+            去首页
+          </navigator>
+          看看热门内容
+        </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<wxs module="formatNumber" src="../assets/formatNumber.dcfc79.wxs" />

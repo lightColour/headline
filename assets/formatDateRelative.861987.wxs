@@ -1,0 +1,33 @@
+var defaults = ({
+    hasYear: true,
+    separator: '-',
+});
+
+function pad(n) {
+    return (n < 10 ? '0' + n : n)
+};
+
+function getLocalDateString(timestamp) {
+    arguments.length = arguments.length;
+    var options = arguments.length > 1 && arguments[(1)] !== undefined ? arguments[(1)] : defaults;
+    if (!timestamp) {
+        return ('')
+    };
+    var time = getDate(timestamp);
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var date = time.getDate();
+    var hasYear = options.hasYear;
+    var separator = options.separator;
+    var dateString = '' + pad(month) + separator + pad(date);
+    if (hasYear) {
+        return ('' + year + separator + dateString)
+    } else {
+        return (dateString)
+    }
+};
+
+function formatDateRelative(timestamp) {
+    return (getLocalDateString(timestamp))
+};
+module.exports = formatDateRelative;

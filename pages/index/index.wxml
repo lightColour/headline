@@ -1,0 +1,36 @@
+<TabNav activeNav="{{currentNav}}" bind:scrollpositionrestored="handleTabScrollPositionRestored" bind:searchIconTap="handleSearchIconTap" bind:tabchange="handleTabChange" searchIconOpacity="{{searchIconOpacity}}"></TabNav>
+<TopToast bind:onref="handleTopToastRef" offset="35px" text="内容已更新"></TopToast>
+<view class="AbsolutelyTop">
+    <Subscription bind:subcribe="handleSubscribe" isVisible="{{showSubscription}}" showButton="{{isSubscriptionButtonVisible}}"></Subscription>
+</view>
+<swiper bindchange="handleChangeTapBySwipe" bindtouchend="handlePageTouchEnd" class="{{cx('Index','withSubscription',showSubscription)}}" current="{{currentNav}}" duration="350">
+    <swiper-item>
+        <scroll-view scrollY bindscroll="onListScroll" class="swiper-list" enableBackToTop="{{currentNav===navIdentifiers.hot}}" wx:if="{{hotList.length}}">
+            <view class="SearchBar">
+                <view bindtap="handleFakeInputTap" class="SearchBar-fakeInput">
+                    <image class="Index-searchIcon" src="/assets/search.ccb702.svg"></image>
+          {{presetWord?presetWord.query:'有问题，找答案'}}
+        </view>
+            </view>
+            <form bind:submit="handleHotItemTap" data-type="{{hotItem.type}}" data-urltoken="{{hotItem.urltoken}}" reportSubmit="{{true}}" wx:for="{{hotList}}" wx:for-item="hotItem" wx:key="{{hotItem.id}}">
+                <button data-type="{{item.type}}" data-urltoken="{{item.urltoken}}" formType="submit">
+                    <HotItem index="{{index}}" item="{{hotItem}}"></HotItem>
+                </button>
+            </form>
+            <view class="Index-Bottom">刷完了，休息一下吧</view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item class="RecommendList">
+        <scroll-view scrollY bindscroll="onListScroll" bindscrolltolower="handleScrollBottom" class="swiper-list" enableBackToTop="{{currentNav===navIdentifiers.recommendation}}" lowerThreshold="200" wx:if="{{recommendList.length}}">
+            <view class="SearchBar SearchBar-recommend">
+                <view bindtap="handleFakeInputTap" class="SearchBar-fakeInput">
+                    <image class="Index-searchIcon" src="/assets/search.ccb702.svg"></image>
+          {{presetWord?presetWord.query:'有问题，找答案'}}
+        </view>
+            </view>
+            <RecommendItem item="{{item}}" wx:for="{{recommendList}}" wx:key="{{item.id}}"></RecommendItem>
+            <view class="RecommendPage-Bottom">{{paging.is_end?'刷完了，休息一下吧':'加载中...'}}</view>
+        </scroll-view>
+    </swiper-item>
+</swiper>
+<wxs module="cx" src="../../assets/cx.68d766.wxs" />
